@@ -12,15 +12,42 @@ $(document).ready(function () {
         localStorage.setItem(time, text);
     });
 
-        //display saved local storage 
-        $("#9amblock .description").val(localStorage.getItem("9amblock"));
-        $("#10amblock .description").val(localStorage.getItem("10amblock"));
-        $("#11amblock .description").val(localStorage.getItem("11amblock"));
-        $("#12pmblock .description").val(localStorage.getItem("12pmblock"));
-        $("#1pmblock .description").val(localStorage.getItem("1pmblock"));
-        $("2pmblock .description").val(localStorage.getItem("2pmblock"));
-        $("3pmblock .description").val(localStorage.getItem("3pmblock"));
-        $("4pmblock .description").val(localStorage.getItem("4pmblock"));
-        $("5pmblock .description").val(localStorage.getItem("5pmblock"));
+    //display saved local storage data
+    $("#block9 .description").val(localStorage.getItem("block9"));
+    $("#block10 .description").val(localStorage.getItem("block10"));
+    $("#block11 .description").val(localStorage.getItem("block11"));
+    $("#block12 .description").val(localStorage.getItem("block12"));
+    $("#block13 .description").val(localStorage.getItem("block13"));
+    $("#block14 .description").val(localStorage.getItem("block14"));
+    $("#block15 .description").val(localStorage.getItem("block15"));
+    $("#block16 .description").val(localStorage.getItem("block16"));
+    $("#block17 .description").val(localStorage.getItem("block17"));
     
+    // function to check if time block is in past, present, or future
+    function hourColor() {
+        var presentHour = moment().hour();
+
+        //loop over time blocks
+        $(".time-block").each(function() {
+            var hourBlock = parseInt($(this).attr("id").split("block")[1]);
+        
+            //assign class based on presentHour
+            if (hourBlock < presentHour) {
+                $(this).addClass("past");
+                $(this).removeClass("future");
+                $(this). removeClass("present");
+            }
+            else if (hourBlock === presentHour) {
+                $(this).removeClass("past");
+                $(this).addClass("present");
+                $(this).removeClass("future");
+            }
+            else {
+                $(this).removeClass("present");
+                $(this).removeClass("past");
+                $(this).addClass("future");
+            }
+        })
+    }
+    hourColor();
 });
