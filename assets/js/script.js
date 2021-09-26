@@ -23,7 +23,7 @@ $(document).ready(function () {
     $("#block16 .description").val(localStorage.getItem("block16"));
     $("#block17 .description").val(localStorage.getItem("block17"));
     
-    // function to check if time block is in past, present, or future
+    // function to check if time block is in past, present, or future and color code
     function hourColor() {
         var presentHour = moment().hour();
 
