@@ -1,6 +1,7 @@
 $(document).ready(function () {
     //display current day
     $("#currentDay").text(moment().format("dddd, MMMM Do YYYY"));
+    
     //save button event listener
     $(".saveBtn").on("click", function () { 
         // create variable for textarea
@@ -23,31 +24,97 @@ $(document).ready(function () {
     $("#block16 .description").val(localStorage.getItem("block16"));
     $("#block17 .description").val(localStorage.getItem("block17"));
     
-    // function to check if time block is in past, present, or future and color code
-    function hourColor() {
-        var presentHour = moment().hour();
+    // converting time to display different colors
+    var hour9 = 9;
+    var hour10 = 10;
+    var hour11 = 11;
+    var hour12 = 12;
+    var hour13 = 13;
+    var hour14 = 14;
+    var hour15 = 15;
+    var hour16 = 16;
+    var hour17 = 17;
 
-        //loop over time blocks
-        $(".time-block").each(function() {
-            var hourBlock = parseInt($(this).attr("id").split("block")[1]);
-        
-            //assign class based on presentHour
-            if (hourBlock < presentHour) {
-                $(this).addClass("past");
-                $(this).removeClass("future");
-                $(this). removeClass("present");
-            }
-            else if (hourBlock === presentHour) {
-                $(this).removeClass("past");
-                $(this).addClass("present");
-                $(this).removeClass("future");
-            }
-            else {
-                $(this).removeClass("present");
-                $(this).removeClass("past");
-                $(this).addClass("future");
-            }
-        })
+    var currentHour = moment().format('H');
+
+    // 9am class changes
+    if (currentHour < hour9) {
+        $("#block9").addClass("future");
+    } else if (currentHour > hour9) {
+        $("#block9").addClass("past");
+    } else if (currentHour = hour9) {
+        $("#block9").addClass("present");
     }
-    hourColor();
+
+    // 10am class changes
+    if (currentHour < hour10) {
+        $("#block10").addClass("future");
+    } else if (currentHour > hour10) {
+        $("#block10").addClass("past");
+    } else if (currentHour = hour10) {
+        $("#block10").addClass("present");
+    }
+
+    // 11am class changes
+    if (currentHour < hour11) {
+        $("#block11").addClass("future");
+    } else if (currentHour > hour11) {
+        $("#block11").addClass("past");
+    } else if (currentHour = hour11) {
+        $("#block11").addClass("present");
+    }
+
+    // 12pm class changes
+    if (currentHour < hour12) {
+        $("#block12").addClass("future");
+    } else if (currentHour > hour12) {
+        $("#block12").addClass("past");
+    } else if (currentHour = hour12) {
+        $("#block12").addClass("present");
+    }
+
+    // 1pm class changes
+    if (currentHour < hour13) {
+        $("#block13").addClass("future");
+    } else if (currentHour > hour13) {
+        $("#block13").addClass("past");
+    } else if (currentHour = hour13) {
+        $("#block13").addClass("present");
+    }
+
+    // 2pm class changes
+    if (currentHour < hour14) {
+        $("#block14").addClass("future");
+    } else if (currentHour > hour14) {
+        $("#block14").addClass("past");
+    } else if (currentHour = hour14) {
+        $("#block14").addClass("present");
+    }
+
+    // 3pm class changes
+    if (currentHour < hour15) {
+        $("#block15").addClass("future");
+    } else if (currentHour > hour15) {
+        $("#block15").addClass("past");
+    } else if (currentHour = hour15) {
+        $("#block15").addClass("present");
+    }
+
+    // 4pm class changes
+    if (currentHour < hour16) {
+        $("#block16").addClass("future");
+    } else if (currentHour > hour16) {
+        $("#block16").addClass("past");
+    } else if (currentHour = hour16) {
+        $("#block16").addClass("present");
+    }
+
+    // 5pm class changes
+    if (currentHour < hour17) {
+        $("#block17").addClass("future");
+    } else if (currentHour > hour17) {
+        $("#block17").addClass("past");
+    } else if (currentHour = hour17) {
+        $("#block17").addClass("present");
+    }
 });
